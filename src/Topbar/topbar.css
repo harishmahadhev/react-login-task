@@ -1,0 +1,29 @@
+.topbar{
+    width: 100%;
+    height: 50px;
+    background-color: black;
+    color: white;
+}
+.topbarWrapper{
+   height: 100%;
+    padding: 0px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.topbarLogo{
+    font-size: 25px;
+    font-style: italic;
+    font-weight: 800;
+    /* text-shadow: 0px 0px 5px #dfdfdfc9 */
+}
+.topbarIcon{
+    margin-right: 10px;
+}
+.topbarRight{
+    display: flex;
+    align-items: center;
+}
+.topbarAvatar{
+    width: 5px;
+}
