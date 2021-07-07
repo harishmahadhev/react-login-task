@@ -8,7 +8,7 @@ export default function Topbar() {
             <div className="topbarWrapper">
                 <div className="topbarLeft">
                     <div className="topbarLogo">
-                        #BOARD
+                        #HASH
                     </div>
                 </div>
                 <div className="topbarRight">
