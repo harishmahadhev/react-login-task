@@ -1,14 +1,15 @@
-import './App.css';
-import Sidebar from './Sidebar/Sidebar';
-import Topbar from './Topbar/Topbar';
+import "./App.css";
+import Home from "./pages/home/Home";
+import Sidebar from "./sidebar/Sidebar";
+import Topbar from "./topbar/Topbar";
 function App() {
   return (
     <div className="App">
-    <Topbar/>
-    <div className ="container">
-      <Sidebar/>
-     <div className="others">other pages</div> 
-    </div>
+      <Topbar />
+      <div className="container">
+        <Sidebar />
+        <Home />
+      </div>
     </div>
   );
 }
