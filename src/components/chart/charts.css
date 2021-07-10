@@ -1,0 +1,28 @@
+.charts {
+    margin: 30px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.pieChart {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    width: 50rem;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    padding: 20px 10px 20px 10px;
+    border-radius: 10px;
+
+}
+
+.areaChart {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    width: 20rem;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    padding: 20px 10px 20px 10px;
+    border-radius: 10px;
+
+}
