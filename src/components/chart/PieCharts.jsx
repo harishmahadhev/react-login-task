@@ -91,21 +91,24 @@ export default function PieCharts() {
   );
 
   return (
-    <div className="areaChart">
-      <PieChart width={400} height={300}>
-        <Pie
-          activeIndex={activeIndex}
-          activeShape={renderActiveShape}
-          data={data}
-          cx={200}
-          cy={150}
-          innerRadius={60}
-          outerRadius={80}
-          fill="#696969"
-          dataKey="value"
-          onMouseEnter={onPieEnter}
-        />
-      </PieChart>
+    <div className="chart">
+      <h3 className="chartTitle">Revenue Sources</h3>
+      <div className="pieChart">
+        <PieChart width={400} height={300}>
+          <Pie
+            activeIndex={activeIndex}
+            activeShape={renderActiveShape}
+            data={data}
+            cx={200}
+            cy={150}
+            innerRadius={60}
+            outerRadius={80}
+            fill="#696969"
+            dataKey="value"
+            onMouseEnter={onPieEnter}
+          />
+        </PieChart>
+      </div>
     </div>
   );
 }

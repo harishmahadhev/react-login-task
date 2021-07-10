@@ -1,28 +1,31 @@
 .charts {
-    margin: 30px;
+    margin: 20px 30px;
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
+}
+
+.chartTitle {
+    margin-bottom: 20px;
+}
+
+.areaChart {
+    padding: 20px 10px 20px 10px;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    width: 50rem;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    border-radius: 10px;
 }
 
 .pieChart {
     display: flex;
     justify-content: center;
     align-content: center;
-    width: 50rem;
-    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-    padding: 20px 10px 20px 10px;
-    border-radius: 10px;
-
-}
-
-.areaChart {
-    display: flex;
-    justify-content: center;
-    align-content: center;
     width: 20rem;
-    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
     padding: 20px 10px 20px 10px;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
     border-radius: 10px;
 
 }

@@ -63,44 +63,47 @@ const data = [
 
 export default function AreaCharts() {
   return (
-    <div className="pieChart">
-      <AreaChart
-        width={800}
-        height={300}
-        data={data}
-        margin={{
-          top: 10,
-          right: 30,
-          left: 0,
-          bottom: 0,
-        }}
-      >
-        <CartesianGrid strokeDasharray="3 3" />
-        <XAxis
-          dataKey="name"
-          interval={1}
-          tick={{ fontFamily: "sans-serif", fontSize: "12px" }}
-        />
-        <YAxis tick={{ fontFamily: "sans-serif", fontSize: "12px" }} />
-        <Tooltip
-          cursor={{ stroke: "black", strokeWidth: 2 }}
-          contentStyle={{ borderRadius: "5px", border: "none" }}
-          labelStyle={{ fontFamily: "sans-serif", fontWeight: 600 }}
-          itemStyle={{
-            color: "grey",
-            fontFamily: "sans-serif",
-            fontSize: "12px",
+    <div className="chart">
+      <h3 className="chartTitle">Earnings Overview</h3>
+      <div className="areaChart">
+        <AreaChart
+          width={800}
+          height={300}
+          data={data}
+          margin={{
+            top: 10,
+            right: 30,
+            left: 0,
+            bottom: 0,
           }}
-        />
-        <Area
-          activeDot={{ stroke: "white", strokeWidth: 2, r: 6 }}
-          dot={{ fill: "black" }}
-          type="monotone"
-          dataKey="Earnings"
-          fill="grey"
-          stroke="black"
-        />
-      </AreaChart>
+        >
+          <CartesianGrid strokeDasharray="3 3" />
+          <XAxis
+            dataKey="name"
+            interval={1}
+            tick={{ fontFamily: "sans-serif", fontSize: "12px" }}
+          />
+          <YAxis tick={{ fontFamily: "sans-serif", fontSize: "12px" }} />
+          <Tooltip
+            cursor={{ stroke: "black", strokeWidth: 2 }}
+            contentStyle={{ borderRadius: "5px", border: "none" }}
+            labelStyle={{ fontFamily: "sans-serif", fontWeight: 600 }}
+            itemStyle={{
+              color: "grey",
+              fontFamily: "sans-serif",
+              fontSize: "12px",
+            }}
+          />
+          <Area
+            activeDot={{ stroke: "white", strokeWidth: 2, r: 6 }}
+            dot={{ fill: "black" }}
+            type="monotone"
+            dataKey="Earnings"
+            fill="grey"
+            stroke="black"
+          />
+        </AreaChart>
+      </div>
     </div>
   );
 }

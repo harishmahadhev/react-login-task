@@ -1,9 +1,9 @@
 .featured {
-    margin: 30px;
+    margin: 20px 30px;
 }
 
 .featuredCard {
-    margin-top: 30px;
+    margin-top: 20px;
     width: 100%;
     display: flex;
     flex-wrap: wrap;
