@@ -1,29 +1,39 @@
 .charts {
     margin: 20px 30px;
     display: flex;
-    justify-content: space-between;
     flex-wrap: wrap;
+    gap: 20px;
+    justify-content: space-between;
 }
 
 .chartTitle {
+    margin-left: 15px;
     margin-bottom: 20px;
 }
 
-.areaChart {
-    padding: 20px 10px 20px 10px;
+.chart {
     display: flex;
     justify-content: center;
     align-content: center;
-    width: 50rem;
+}
+
+.areaChart {
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+    align-items: center;
+    flex: 3;
+    padding: 20px 10px 20px 10px;
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
     border-radius: 10px;
 }
 
 .pieChart {
+    flex: 1;
     display: flex;
-    justify-content: center;
-    align-content: center;
-    width: 20rem;
+    flex-direction: column;
+    justify-items: center;
+    align-items: center;
     padding: 20px 10px 20px 10px;
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
     border-radius: 10px;

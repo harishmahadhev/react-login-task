@@ -1,11 +1,13 @@
-.App{
-background-color: whitesmoke;
-height: 100vh;
-font-family: serif;
+.App {
+    background-color: whitesmoke;
+    /* height: 100vh; */
+    font-family: serif;
 }
-.container{
+
+.container {
     display: flex;
 }
-.others{
+
+.others {
     flex: 4;
 }

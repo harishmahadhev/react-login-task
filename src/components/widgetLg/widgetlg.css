@@ -1,0 +1,23 @@
+.widgetLg {
+    flex: 2;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+.widgetLgTitle {
+    margin: 20px;
+}
+
+.widgetLgButton.Approved {
+    color: rgb(0, 87, 0);
+    background-color: rgb(186, 252, 221);
+}
+
+.widgetLgButton.Pending {
+    color: rgb(1, 62, 141);
+    background-color: rgb(196, 217, 255);
+}
+
+.widgetLgButton.Declined {
+    color: rgb(88, 0, 44);
+    background-color: rgb(255, 224, 229);
+}

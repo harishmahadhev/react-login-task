@@ -7,7 +7,6 @@ import {
   YAxis,
   CartesianGrid,
   Tooltip,
-  ResponsiveContainer,
 } from "recharts";
 
 const data = [
@@ -63,12 +62,13 @@ const data = [
 
 export default function AreaCharts() {
   return (
-    <div className="chart">
+    <div className="areaChart">
       <h3 className="chartTitle">Earnings Overview</h3>
-      <div className="areaChart">
+      <div>
         <AreaChart
-          width={800}
-          height={300}
+          className="chart"
+          width={400}
+          height={250}
           data={data}
           margin={{
             top: 10,

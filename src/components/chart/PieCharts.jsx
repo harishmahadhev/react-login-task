@@ -1,5 +1,5 @@
 import React, { useCallback, useState } from "react";
-import { PieChart, Pie, Sector, ResponsiveContainer } from "recharts";
+import { PieChart, Pie, Sector } from "recharts";
 
 const data = [
   { name: "Direct", value: 55 },
@@ -91,16 +91,16 @@ export default function PieCharts() {
   );
 
   return (
-    <div className="chart">
+    <div className="pieChart">
       <h3 className="chartTitle">Revenue Sources</h3>
-      <div className="pieChart">
-        <PieChart width={400} height={300}>
+      <div>
+        <PieChart className="chart" width={400} height={250}>
           <Pie
             activeIndex={activeIndex}
             activeShape={renderActiveShape}
             data={data}
             cx={200}
-            cy={150}
+            cy={130}
             innerRadius={60}
             outerRadius={80}
             fill="#696969"
