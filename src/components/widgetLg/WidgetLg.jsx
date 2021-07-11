@@ -14,7 +14,7 @@ import {
 
 const StyledTableCell = withStyles((theme) => ({
   head: {
-    color: "#606060",
+    color: "black",
   },
   body: {
     fontSize: 14,
