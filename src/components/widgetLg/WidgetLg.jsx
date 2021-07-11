@@ -15,10 +15,11 @@ import {
 const StyledTableCell = withStyles((theme) => ({
   head: {
     color: "black",
+    fontWeight: 600,
   },
   body: {
-    fontSize: 14,
-    fontFamily: "Roboto",
+    fontSize: 12,
+    fontFamily: "sans-serif",
   },
 }))(TableCell);
 
@@ -34,7 +35,7 @@ const CustomButton = ({ type }) => {
       style={{
         fontSize: "10px",
         fontWeight: 600,
-        fontFamily: "Roboto",
+        fontFamily: "sans-serif",
         textTransform: "capitalize",
         width: "4rem",
       }}
@@ -72,7 +73,7 @@ export default function WidgetLg() {
             <TableRow>
               <StyledTableCell>Kumar</StyledTableCell>
               <StyledTableCell>2 Jun 2021</StyledTableCell>
-              <StyledTableCell>₹4000.00</StyledTableCell>
+              <StyledTableCell>₹8000.00</StyledTableCell>
               <StyledTableCell>
                 <CustomButton type="Pending" />
               </StyledTableCell>
@@ -80,7 +81,7 @@ export default function WidgetLg() {
             <TableRow>
               <StyledTableCell>Harish</StyledTableCell>
               <StyledTableCell>2 Jun 2021</StyledTableCell>
-              <StyledTableCell>₹4000.00</StyledTableCell>
+              <StyledTableCell>₹400.00</StyledTableCell>
               <StyledTableCell>
                 <CustomButton type="Approved" />
               </StyledTableCell>
@@ -88,7 +89,7 @@ export default function WidgetLg() {
             <TableRow>
               <StyledTableCell>Harish</StyledTableCell>
               <StyledTableCell>2 Jun 2021</StyledTableCell>
-              <StyledTableCell>₹4000.00</StyledTableCell>
+              <StyledTableCell>₹900.00</StyledTableCell>
               <StyledTableCell>
                 <CustomButton type="Declined" />
               </StyledTableCell>
