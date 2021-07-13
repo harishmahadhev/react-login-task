@@ -1,6 +1,6 @@
 import "./user.css";
 import React from "react";
-import { Avatar, Button } from "@material-ui/core";
+import { Avatar, Button, TextField } from "@material-ui/core";
 import {
   CalendarToday,
   LocationSearching,
@@ -8,8 +8,26 @@ import {
   PermIdentity,
   PhoneAndroid,
 } from "@material-ui/icons";
+import { useForm } from "react-hook-form";
+import * as yup from "yup";
+import { yupResolver } from "@hookform/resolvers/yup";
+
+const schema = yup.object().shape({
+  userName: yup.string().required(),
+  fullName: yup.string().required(),
+  email: yup.string().email().required(),
+  phone: yup.number().required().min(10).positive().integer(),
+  address: yup.string().required(),
+});
 
 export default function User() {
+  const { register, handleSubmit } = useForm({
+    resolver: yupResolver(schema),
+  });
+  const submitForm = (data) => {
+    alert(JSON.stringify(data));
+  };
+
   return (
     <div className="user">
       <div className="userTitleContainer">
@@ -56,6 +74,15 @@ export default function User() {
         </div>
         <div className="userUpdate">
           <h2 className="userUpdateTitle"> Edit</h2>
+          <form onSubmit={handleSubmit(submitForm)} autoComplete="off">
+            <TextField
+              id="standard-required"
+              label="Username"
+              name="userName"
+              defaultValue="vineshmahadhev"
+              className="userUpdateText"
+            />
+          </form>
         </div>
       </div>
     </div>
