@@ -132,3 +132,38 @@ export const rows = [
     transaction: "₹8000.00",
   },
 ];
+
+export const userDetails = {
+  input: [
+    {
+      label: "Username",
+      name: "userName",
+      value: "vineshmahadhev",
+      type: "text",
+    },
+    {
+      label: "Fullname",
+      value: "Vinesh Kumar",
+      name: "fullName",
+      type: "text",
+    },
+    {
+      label: "Email",
+      value: "vineshmahadhev@gmail.com",
+      name: "email",
+      type: "text",
+    },
+    {
+      label: "Phone",
+      value: "+91 9638527410",
+      name: "phone",
+      type: "text",
+    },
+    {
+      label: "Address",
+      value: "Chennai, India",
+      name: "address",
+      type: "text",
+    },
+  ],
+};

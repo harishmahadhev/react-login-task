@@ -122,6 +122,8 @@ label {
     padding-left: 15px;
     box-sizing: border-box;
     font-weight: 500;
+    color: rgb(58, 58, 58);
+    font-size: 12px;
 }
 
 .userUpdateInput:focus {
@@ -131,6 +133,11 @@ label {
 .userUpdateInput::placeholder {
     font-size: 12px;
 
+}
+
+.userUpdateMessage {
+    color: red;
+    font-size: 10px;
 }
 
 .userUpdateImg {

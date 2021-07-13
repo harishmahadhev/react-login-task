@@ -13,7 +13,7 @@ import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { Link } from "react-router-dom";
-
+import { userDetails } from "../../userContent";
 const schema = yup.object().shape({
   userName: yup.string().required(),
   fullName: yup.string().required(),
@@ -23,8 +23,11 @@ const schema = yup.object().shape({
 });
 
 export default function User() {
-  const resolver = yupResolver(schema);
-  const { register, handleSubmit } = useForm({ resolver });
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({ resolver: yupResolver(schema) });
   const submitForm = (data) => {
     console.log(data);
   };
@@ -83,52 +86,25 @@ export default function User() {
             autoComplete="off"
           >
             <div className="userUpdateLeft">
-              <div className="userUpdateItem">
-                <label>Username</label>
-                <input
-                  type="text"
-                  name="userName"
-                  placeholder="vineshmahadhev"
-                  className="userUpdateInput"
-                />
-              </div>
-              <div className="userUpdateItem">
-                <label>Fullname</label>
-                <input
-                  type="text"
-                  name="fullName"
-                  placeholder="Vinesh Kumar"
-                  className="userUpdateInput"
-                />
-              </div>
-              <div className="userUpdateItem">
-                <label>Email</label>
-                <input
-                  type="text"
-                  name="email"
-                  input
-                  placeholder="vineshmahadhev@gmail.com"
-                  className="userUpdateInput"
-                />
-              </div>
-              <div className="userUpdateItem">
-                <label>Phone</label>
-                <input
-                  type="text"
-                  name="phone"
-                  placeholder="+91 9632587410"
-                  className="userUpdateInput"
-                />
-              </div>
-              <div className="userUpdateItem">
-                <label>Address</label>
-                <input
-                  type="text"
-                  name="address"
-                  placeholder="Chennai, India"
-                  className="userUpdateInput"
-                />
-              </div>
+              {userDetails.input.map((input, key) => {
+                return (
+                  <div key={key} className="userUpdateItem">
+                    <label>{input.label}</label>
+                    <input
+                      type="text"
+                      name={input.name}
+                      placeholder={input.value}
+                      className="userUpdateInput"
+                      {...register(input.name)}
+                    />
+                    {errors[input.name] && (
+                      <span className="userUpdateMessage">
+                        {errors[input.name].message}
+                      </span>
+                    )}
+                  </div>
+                );
+              })}
             </div>
             <div className="userUpdateRight">
               <div className="userUpdateUpload">
