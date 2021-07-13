@@ -132,12 +132,15 @@ label {
 
 .userUpdateInput::placeholder {
     font-size: 12px;
+    color: rgb(179, 179, 179);
 
 }
 
 .userUpdateMessage {
+    margin-top: 5px;
+    padding-left: 10px;
     color: red;
-    font-size: 10px;
+    font-size: 9px;
 }
 
 .userUpdateImg {

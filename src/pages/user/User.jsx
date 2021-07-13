@@ -18,7 +18,7 @@ const schema = yup.object().shape({
   userName: yup.string().required(),
   fullName: yup.string().required(),
   email: yup.string().email().required(),
-  phone: yup.number().required().min(10).positive().integer(),
+  phone: yup.number().required().min(10).positive(),
   address: yup.string().required(),
 });
 
@@ -97,10 +97,16 @@ export default function User() {
                       className="userUpdateInput"
                       {...register(input.name)}
                     />
-                    {errors[input.name] && (
+                    {errors.phone ? (
                       <span className="userUpdateMessage">
-                        {errors[input.name].message}
+                        Invalid Phone Number
                       </span>
+                    ) : (
+                      errors[input.name] && (
+                        <span className="userUpdateMessage">
+                          {errors[input.name].message}
+                        </span>
+                      )
                     )}
                   </div>
                 );
