@@ -31,7 +31,7 @@ export default function NewUser() {
       <form className="newUserForm">
         {userDetails.input.map((input, key) => {
           return (
-            <div className="newUserItem">
+            <div key={key} className="newUserItem">
               <label>{input.label}</label>
               <CssTextField
                 type={input.type}
