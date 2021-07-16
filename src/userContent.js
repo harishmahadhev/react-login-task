@@ -167,3 +167,26 @@ export const userDetails = {
     },
   ],
 };
+
+export const genders = {
+  input: [
+    {
+      name: "gender",
+      value: "male",
+      type: "radio",
+      label: "Male",
+    },
+    {
+      name: "gender",
+      value: "female",
+      type: "radio",
+      label: "Female",
+    },
+    {
+      name: "gender",
+      value: "other",
+      type: "radio",
+      label: "Other",
+    },
+  ],
+};

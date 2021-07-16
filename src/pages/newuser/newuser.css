@@ -1,3 +1,8 @@
 .newUser {
     flex: 4;
 }
+
+.newUserItem {
+    display: flex;
+    flex-direction: column;
+}
