@@ -93,7 +93,7 @@ export default function User() {
                   <div key={key} className="userUpdateItem">
                     <label>{input.label}</label>
                     <input
-                      type="text"
+                      type={input.type}
                       name={input.name}
                       placeholder={input.value}
                       className="userUpdateInput"
