@@ -14,6 +14,7 @@ import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { Link } from "react-router-dom";
 import { userDetails } from "../../userContent";
+
 const schema = yup.object().shape({
   userName: yup.string().required(),
   fullName: yup.string().required(),
@@ -28,6 +29,7 @@ export default function User() {
     handleSubmit,
     formState: { errors },
   } = useForm({ resolver: yupResolver(schema) });
+
   const submitForm = (data) => {
     console.log(data);
   };
@@ -36,7 +38,7 @@ export default function User() {
     <div className="user">
       <div className="userTitleContainer">
         <h1 className="userTitle">Edit User</h1>
-        <Link to="/newUser">
+        <Link to="/newuser" style={{ textDecoration: "none" }}>
           <Button className="userAddButton"> Create</Button>
         </Link>
       </div>
