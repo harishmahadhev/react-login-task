@@ -1,0 +1,71 @@
+.login {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.loginContainer {
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+    padding: 30px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+.loginTitle {
+    font-size: 32px;
+    font-weight: 500;
+    margin: 20px 0;
+    text-align: center;
+}
+
+.loginInput {
+    padding-left: 20px;
+    font-size: 12px;
+    outline: none;
+    border: 1px solid rgb(173, 173, 173);
+    border-radius: 50px;
+    margin: 10px 0;
+    height: 40px;
+    width: 300px;
+}
+
+.loginContainer .loginButton {
+    background-color: rgb(56, 76, 255);
+    color: white;
+    text-transform: capitalize;
+    font-size: 13px;
+    font-weight: 400;
+    width: 100%;
+    height: 40px;
+    border-radius: 50px;
+    margin: 10px 0;
+}
+
+hr {
+    opacity: 50%;
+    margin: 5px 0;
+}
+
+.loginContainer .loginButton:hover {
+    background-color: rgb(83, 101, 255);
+}
+
+.loginButton.Google {
+    background-color: red;
+    color: white;
+}
+
+.loginButton.Facebook {
+    background-color: #4267B2;
+    color: white;
+}
+
+.loginContainer .loginButton.Google:hover {
+    background-color: rgb(255, 83, 83);
+}
+
+.loginContainer .loginButton.Facebook:hover {
+    background-color: #456ebe;
+}

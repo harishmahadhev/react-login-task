@@ -26,7 +26,7 @@ const StyledTableCell = withStyles((theme) => ({
 const useStyles = makeStyles({
   table: {
     backgroundColor: "whitesmoke",
-    minWidth: 500,
+    minWidth: 200,
   },
 });
 const CustomButton = ({ type }) => {

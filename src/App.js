@@ -9,13 +9,16 @@ import NewUser from "./pages/newuser/NewUser";
 
 function App() {
   return (
-    <div className="App">
-      <Topbar />
-      <div className="container">
-        <Sidebar />
-        <Switch>
+    <Switch>
+      <div className="App">
+        <Topbar />
+        <div className="container">
+          <Sidebar />
           <Route path="/home">
             <Home />
+          </Route>
+          <Route path="/">
+            <Redirect to="/home" />
           </Route>
           <Route path="/newuser">
             <NewUser />
@@ -26,12 +29,9 @@ function App() {
           <Route exact path="/users">
             <UserList />
           </Route>
-          <Route exact path="/">
-            <Redirect to="/home" />
-          </Route>
-        </Switch>
+        </div>
       </div>
-    </div>
+    </Switch>
   );
 }
 

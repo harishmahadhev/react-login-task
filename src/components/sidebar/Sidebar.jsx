@@ -10,7 +10,7 @@ import {
 import { Link } from "react-router-dom";
 import { useState } from "react";
 export default function Sidebar() {
-  const [classes, setClasses] = useState();
+  const [classes, setClasses] = useState(1);
   const handleChange = (index) => {
     setClasses(index);
   };
@@ -20,7 +20,10 @@ export default function Sidebar() {
         <div className="sidebarMenu">
           <h3 className="sidebarTitle">DASHBOARD</h3>
           <ul className="sidebarList">
-            <Link style={{ textDecoration: "none", color: "inherit" }} to="/">
+            <Link
+              style={{ textDecoration: "none", color: "inherit" }}
+              to="/home"
+            >
               <li
                 className={
                   classes === 1 ? "sidebarListItem active" : "sidebarListItem"

@@ -1,10 +1,13 @@
 .widgetLg {
     flex: 2;
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    border-radius: 10px;
+    padding: 20px 0;
+    margin-right: 10px;
 }
 
 .widgetLgTitle {
-    margin: 20px;
+    padding-left: 20px;
 }
 
 .widgetLgButton.Approved {

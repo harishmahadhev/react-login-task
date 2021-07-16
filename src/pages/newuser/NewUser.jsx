@@ -28,13 +28,6 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   checked: {},
-  select: {
-    "& .MuiSelect-select": {
-      color: "black",
-      backgroundColor: "transparent",
-      borderBottomColor: "black",
-    },
-  },
 }));
 
 const CssTextField = withStyles({
