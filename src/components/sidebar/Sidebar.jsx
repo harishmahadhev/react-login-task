@@ -3,7 +3,6 @@ import React from "react";
 import {
   AccountBalance,
   Assessment,
-  DragHandle,
   Home,
   Person,
   ShoppingCart,
@@ -11,8 +10,7 @@ import {
 import { Link } from "react-router-dom";
 import { useState } from "react";
 export default function Sidebar() {
-  const [classes, setClasses] = useState("sidebarListItem ");
-  const [active, setActive] = useState("active");
+  const [classes, setClasses] = useState();
   const handleChange = (index) => {
     setClasses(index);
   };
