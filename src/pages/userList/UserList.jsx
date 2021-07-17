@@ -53,7 +53,7 @@ export default function UserList() {
         return (
           <>
             <Link
-              to={"/users/" + params.row.id}
+              to={"/app/users/" + params.row.id}
               style={{ textDecoration: "none" }}
             >
               <Button

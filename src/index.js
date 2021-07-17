@@ -1,7 +1,12 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import App from "./App";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Redirect,
+} from "react-router-dom";
 import Login from "./pages/login/Login";
 
 ReactDOM.render(
@@ -11,8 +16,11 @@ ReactDOM.render(
         <Route path="/login">
           <Login />
         </Route>
-        <Route path="/">
+        <Route path="/app">
           <App />
+        </Route>
+        <Route exact path="/">
+          <Redirect to="/login" />
         </Route>
       </Switch>
     </Router>

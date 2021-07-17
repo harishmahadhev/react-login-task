@@ -9,17 +9,33 @@
     /* Chrome 10-25, Safari 5.1-6 */
     background: linear-gradient(to top, #434343, #000000);
     /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
-
 }
 
 .loginContainer {
-    background-color: white;
     display: flex;
-    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
     border-radius: 10px;
     padding: 30px;
+    margin: 30px;
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    background-color: white;
+}
+
+.loginImg {
+    width: 400px;
+}
+
+.loginLeft {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.loginRight {
+    display: flex;
+    flex-direction: column;
 }
 
 .loginTitle {
@@ -61,20 +77,45 @@ hr {
     background-color: rgb(83, 101, 255);
 }
 
-.loginButton.Google {
-    background-color: red;
-    color: white;
+.loginOthers {
+    display: flex;
+    flex-direction: column;
 }
 
-.loginButton.Facebook {
-    background-color: #4267B2;
-    color: white;
+.signInIcons {
+    display: flex;
+    justify-content: center;
+    align-content: center;
 }
 
-.loginContainer .loginButton.Google:hover {
-    background-color: rgb(255, 83, 83);
+.signInIcons .signIn {
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    background-color: white;
+    border-radius: 50%;
+    height: 40px;
+    width: 40px;
+    font-size: 18px !important;
+    margin-right: 10px;
+
 }
 
-.loginContainer .loginButton.Facebook:hover {
-    background-color: #456ebe;
+@media screen and (max-width : 600px) {
+    .loginImg {
+        width: 300px;
+    }
+
+    .login {
+        height: 100vh;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        background: #000000;
+        /* fallback for old browsers */
+        background: -webkit-linear-gradient(to top, #434343, #000000);
+        /* Chrome 10-25, Safari 5.1-6 */
+        background: linear-gradient(to top, #434343, #000000);
+        /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    }
+
 }

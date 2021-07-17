@@ -14,21 +14,21 @@ function App() {
         <Topbar />
         <div className="container">
           <Sidebar />
-          <Route path="/home">
+          <Route path="/app/home">
             <Home />
           </Route>
-          <Route path="/newuser">
+          <Route path="/app/newuser">
             <NewUser />
           </Route>
-          <Route path="/users/:Id">
+          <Route path="/app/users/:Id">
             <User />
           </Route>
-          <Route exact path="/users">
+          <Route exact path="/app/users">
             <UserList />
           </Route>
-          <Route exact path="/">
+          {/* <Route exact path="/app">
             <Redirect to="/home" />
-          </Route>
+          </Route> */}
         </div>
       </div>
     </Switch>

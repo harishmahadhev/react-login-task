@@ -22,7 +22,7 @@ export default function Sidebar() {
           <ul className="sidebarList">
             <Link
               style={{ textDecoration: "none", color: "inherit" }}
-              to="/home"
+              to="/app/home"
             >
               <li
                 className={
@@ -35,7 +35,7 @@ export default function Sidebar() {
             </Link>
             <Link
               style={{ textDecoration: "none", color: "inherit" }}
-              to="/users"
+              to="/app/users"
             >
               <li
                 className={

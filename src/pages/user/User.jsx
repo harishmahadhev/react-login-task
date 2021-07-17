@@ -38,7 +38,7 @@ export default function User() {
     <div className="user">
       <div className="userTitleContainer">
         <h1 className="userTitle">Edit User</h1>
-        <Link to="/newuser" style={{ textDecoration: "none" }}>
+        <Link to="/app/newuser" style={{ textDecoration: "none" }}>
           <Button className="userAddButton"> Create</Button>
         </Link>
       </div>
