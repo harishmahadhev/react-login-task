@@ -22,7 +22,7 @@ export default function FeaturedInfo() {
         <div className="featuredItem">
           <div className="featuredMoneyContainter">
             <div className="featuredTitle">Earnings (Annual)</div>
-            <span className="featuredMoney">₹40,000</span>
+            <span className="featuredMoney">₹80,00,000</span>
           </div>
           <AttachMoney className="featuredIcon" />
         </div>
