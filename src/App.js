@@ -17,9 +17,6 @@ function App() {
           <Route path="/home">
             <Home />
           </Route>
-          <Route path="/">
-            <Redirect to="/home" />
-          </Route>
           <Route path="/newuser">
             <NewUser />
           </Route>
@@ -28,6 +25,9 @@ function App() {
           </Route>
           <Route exact path="/users">
             <UserList />
+          </Route>
+          <Route exact path="/">
+            <Redirect to="/home" />
           </Route>
         </div>
       </div>

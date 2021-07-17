@@ -36,6 +36,11 @@ export default function Login() {
           id="password"
           placeholder="Enter Your Password"
         />
+        <div
+          style={{ fontSize: "12px", margin: "0 0 10px 10px", color: "grey" }}
+        >
+          Forgort Password?
+        </div>
         <div>
           <Checkbox
             icon={<CheckBoxOutlineBlank fontSize="small" />}
