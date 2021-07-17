@@ -46,15 +46,30 @@ export default function Sidebar() {
                 <Person className="sidebarIcon" /> User
               </li>
             </Link>
-            <li className="sidebarListItem">
-              <ShoppingCart className="sidebarIcon" /> Product
-            </li>
-            <li className="sidebarListItem">
-              <Assessment className="sidebarIcon" /> Analytics
-            </li>
-            <li className="sidebarListItem">
-              <AccountBalance className="sidebarIcon" /> Accounts
-            </li>
+            <Link
+              style={{ textDecoration: "none", color: "inherit" }}
+              to="/app/newuser"
+            >
+              <li className="sidebarListItem">
+                <ShoppingCart className="sidebarIcon" /> Create User
+              </li>
+            </Link>
+            <Link
+              style={{ textDecoration: "none", color: "inherit" }}
+              to="/app/users/:id"
+            >
+              <li className="sidebarListItem">
+                <Assessment className="sidebarIcon" /> Edit User
+              </li>
+            </Link>
+            <Link
+              style={{ textDecoration: "none", color: "inherit" }}
+              to="/login"
+            >
+              <li className="sidebarListItem">
+                <AccountBalance className="sidebarIcon" /> Login Page
+              </li>
+            </Link>
           </ul>
         </div>
       </div>
