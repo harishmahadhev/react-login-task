@@ -1,26 +1,12 @@
 import "./login.css";
 import React from "react";
-import { Button, Checkbox, IconButton } from "@material-ui/core";
-import { makeStyles } from "@material-ui/core";
-import { CheckBox, CheckBoxOutlineBlank } from "@material-ui/icons";
+import { Button, IconButton } from "@material-ui/core";
 import { Link } from "react-router-dom";
 import logo from "./logo.png";
 import { FcGoogle } from "react-icons/fc";
 import { ImFacebook, ImTwitter } from "react-icons/im";
-const useStyles = makeStyles((theme) => ({
-  root: {
-    fontSize: "10px",
-  },
-  checkbox: {
-    color: "black",
-    "&$checked": {
-      color: "black",
-    },
-  },
-  checked: {},
-}));
+
 export default function Login() {
-  const classes = useStyles();
   return (
     <div className="login">
       <div className="loginContainer">
