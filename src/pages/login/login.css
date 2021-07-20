@@ -38,6 +38,11 @@
     flex-direction: column;
 }
 
+.loginForm {
+    display: flex;
+    flex-direction: column;
+}
+
 .loginTitle {
     font-size: 32px;
     font-weight: 500;
@@ -97,6 +102,12 @@ hr {
     font-size: 18px !important;
     margin-right: 10px;
 
+}
+
+.loginError {
+    font-size: 10px;
+    padding-left: 10px;
+    color: red;
 }
 
 @media screen and (max-width : 600px) {
