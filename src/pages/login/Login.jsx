@@ -6,41 +6,16 @@ import {
   InputAdornment,
   TextField,
 } from "@material-ui/core";
+import { GoogleLogin } from "react-google-login";
 import signInlogo from "./logo.png";
 import signUplogo from "./logo2.png";
 import { FcGoogle } from "react-icons/fc";
 import { ImFacebook, ImTwitter } from "react-icons/im";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import * as yup from "yup";
 import { Visibility, VisibilityOff } from "@material-ui/icons";
 import { Link } from "react-router-dom";
-
-const signupSchema = yup.object().shape({
-  email: yup
-    .string()
-    .required("Your Email is required")
-    .email("Enter valid Email"),
-  password: yup
-    .string()
-    .min(8, "Must contain atleast 8 characters")
-    .required("Enter Password"),
-  confirmPassword: yup
-    .string()
-    .oneOf([yup.ref("password"), null], "Password doesn't match")
-    .required("Password Required"),
-  fullname: yup.string().required("Your name is required"),
-});
-const signinSchema = yup.object().shape({
-  email: yup
-    .string()
-    .required("Your Email is required")
-    .email("Enter valid Email"),
-  password: yup
-    .string()
-    .min(8, "Must contain atleast 8 characters")
-    .required("Enter Password"),
-});
+import { signupSchema, signinSchema } from "./signupSchema";
 
 export default function Login() {
   const [isSignup, setSignup] = useState(false);
@@ -53,26 +28,15 @@ export default function Login() {
     resolver: isSignup ? yupResolver(signupSchema) : yupResolver(signinSchema),
   });
 
-  const loginSubmit = (data) => {
-    console.log(data);
-  };
+  const loginSubmit = (data) => console.log(data);
+
   const handleShowPassword = () => setShowPassword((on) => !on);
 
-  const inputProps = (name, type) => ({
-    disableUnderline: true,
-    style: {
-      fontSize: "13px",
-      fontFamily: "Roboto",
-      padding: "7px 0",
-    },
-    endAdornment: name === "password" && (
-      <InputAdornment>
-        <IconButton disableRipple onClick={handleShowPassword}>
-          {type === "password" ? <Visibility /> : <VisibilityOff />}
-        </IconButton>
-      </InputAdornment>
-    ),
-  });
+  const inputProps = StyledTextField();
+  const googleFailure = () => console.log("Google Sign in unsuccessfull");
+  const googleSuccess = (res) => console.log(res);
+  const ClientId =
+    "1043680528544-nje8p2g7e1sf2n7orpo5p7ki24ni0qkr.apps.googleusercontent.com";
 
   return (
     <div className="login">
@@ -185,12 +149,26 @@ export default function Login() {
                   textAlign: "center",
                 }}
               >
-                Sign up with
+                Sign in with
               </div>
+
               <div className="signInIcons">
-                <IconButton className="signIn">
-                  <FcGoogle />
-                </IconButton>
+                <GoogleLogin
+                  clientId={ClientId}
+                  render={(renderProps) => (
+                    <IconButton
+                      className="signIn"
+                      onClick={renderProps.onClick}
+                      disabled={renderProps.disabled}
+                    >
+                      <FcGoogle />
+                    </IconButton>
+                  )}
+                  onSuccess={googleSuccess}
+                  onFailure={googleFailure}
+                  cookiePolicy="single_host_origin"
+                />
+
                 <IconButton className="signIn">
                   <ImFacebook style={{ color: "blue" }} />
                 </IconButton>
@@ -251,4 +229,22 @@ export default function Login() {
       </div>
     </div>
   );
+
+  function StyledTextField() {
+    return (name, type) => ({
+      disableUnderline: true,
+      style: {
+        fontSize: "13px",
+        fontFamily: "Roboto",
+        padding: "7px 0",
+      },
+      endAdornment: name === "password" && (
+        <InputAdornment>
+          <IconButton disableRipple onClick={handleShowPassword}>
+            {type === "password" ? <Visibility /> : <VisibilityOff />}
+          </IconButton>
+        </InputAdornment>
+      ),
+    });
+  }
 }
