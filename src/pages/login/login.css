@@ -50,7 +50,7 @@
     text-align: center;
 }
 
-.loginInput {
+.loginForm .loginInput {
     padding-left: 20px;
     font-size: 12px;
     outline: none;
@@ -59,7 +59,10 @@
     margin: 10px 0;
     height: 40px;
     width: 300px;
+
 }
+
+
 
 .loginContainer .loginButton {
     background-color: rgb(56, 76, 255);

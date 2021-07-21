@@ -1,5 +1,5 @@
 import "./login.css";
-import React from "react";
+import React, { useState } from "react";
 import { Button, IconButton } from "@material-ui/core";
 import logo from "./logo.png";
 import { FcGoogle } from "react-icons/fc";
@@ -7,14 +7,20 @@ import { ImFacebook, ImTwitter } from "react-icons/im";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
+import { TextInput } from "./TextInput";
 
 const schema = yup.object().shape({
   email: yup.string().email().required("Email is required"),
-  password: yup.string().required("Password is required"),
+  password: yup
+    .string()
+    .min(8, "Must contain atleast 8 characters")
+    .required("Password is required"),
+  fullname: yup.string().required("Your name is required"),
 });
 
 export default function Login() {
-  
+  const isSignup = true;
+  const [showPassword, setShowPassword] = useState(false);
   const {
     register,
     handleSubmit,
@@ -24,7 +30,8 @@ export default function Login() {
   const loginSubmit = (data) => {
     console.log(data);
   };
-
+  const handleShowPassword = () => setShowPassword((on) => !on);
+  const handleChange = () => {};
   return (
     <div className="login">
       <div className="loginContainer">
@@ -42,10 +49,19 @@ export default function Login() {
             autoComplete="off"
             onSubmit={handleSubmit(loginSubmit)}
           >
-            <input
-              autoComplete="off"
+            {isSignup && (
+              <>
+                <TextInput
+                  className="loginInput"
+                  name="fullname"
+                  placeholder={`Enter Your First Name`}
+                  {...register("fullname")}
+                />
+              </>
+            )}
+
+            <TextInput
               className="loginInput"
-              type="text"
               name="email"
               placeholder="Enter Your Email"
               {...register("email")}
@@ -54,12 +70,14 @@ export default function Login() {
               <div className="loginError">{errors.email.message}</div>
             )}
 
-            <input
+            <TextInput
               className="loginInput"
-              type="password"
               name="password"
-              id="password"
+              handleChange={handleChange}
+              type={showPassword ? "text" : "password"}
+              handleShowPassword={handleShowPassword}
               placeholder="Enter Your Password"
+              autoComplete="off"
               {...register("password")}
             />
             {errors.password && (
@@ -77,7 +95,7 @@ export default function Login() {
             </div>
             <Button type="submit" className="loginButton">
               Login
-            </Button> 
+            </Button>
             <hr />
             <div className="loginOthers">
               <div
@@ -102,26 +120,49 @@ export default function Login() {
                 </IconButton>
               </div>
             </div>
-            <div
-              style={{
-                fontSize: "12px",
-                textAlign: "center",
-                color: "grey",
-                padding: "10px 0",
-              }}
-            >
-              Don't have an account?
-              <span
+            {isSignup ? (
+              <div
                 style={{
-                  color: "black",
-                  fontWeight: 500,
-                  fontSize: "13px",
-                  padding: " 0 10px",
+                  fontSize: "12px",
+                  textAlign: "center",
+                  color: "grey",
+                  padding: "10px 0",
                 }}
               >
-                Sign up
-              </span>
-            </div>
+                Already have an account?
+                <span
+                  style={{
+                    color: "black",
+                    fontWeight: 500,
+                    fontSize: "13px",
+                    padding: " 0 10px",
+                  }}
+                >
+                  Sign In
+                </span>
+              </div>
+            ) : (
+              <div
+                style={{
+                  fontSize: "12px",
+                  textAlign: "center",
+                  color: "grey",
+                  padding: "10px 0",
+                }}
+              >
+                Don't have an account?
+                <span
+                  style={{
+                    color: "black",
+                    fontWeight: 500,
+                    fontSize: "13px",
+                    padding: " 0 10px",
+                  }}
+                >
+                  Sign up
+                </span>
+              </div>
+            )}
           </form>
         </div>
       </div>
