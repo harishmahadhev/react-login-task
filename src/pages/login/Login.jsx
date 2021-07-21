@@ -6,7 +6,8 @@ import {
   InputAdornment,
   TextField,
 } from "@material-ui/core";
-import LoginLogo from "./logo.png";
+import signInlogo from "./logo.png";
+import signUplogo from "./logo2.png";
 import { FcGoogle } from "react-icons/fc";
 import { ImFacebook, ImTwitter } from "react-icons/im";
 import { useForm } from "react-hook-form";
@@ -56,7 +57,6 @@ export default function Login() {
     console.log(data);
   };
   const handleShowPassword = () => setShowPassword((on) => !on);
-  const handleChange = () => {};
 
   const inputProps = (name, type) => ({
     disableUnderline: true,
@@ -80,7 +80,11 @@ export default function Login() {
         {/* Login Image Div */}
 
         <div className="loginLeft">
-          <img src={LoginLogo} className="loginImg" alt="" />
+          <img
+            src={isSignup ? signUplogo : signInlogo}
+            className="loginImg"
+            alt=""
+          />
         </div>
         {/* Login Form Starts */}
 
@@ -122,7 +126,6 @@ export default function Login() {
             <TextField
               className="loginInput"
               name="password"
-              handleChange={handleChange}
               type={showPassword ? "text" : "password"}
               handleShowPassword={handleShowPassword}
               placeholder="Enter Your Password"
@@ -140,7 +143,6 @@ export default function Login() {
                 <TextField
                   className="loginInput"
                   name="confirmPassword"
-                  handleChange={handleChange}
                   type="password"
                   placeholder="Confirm Your Password"
                   {...register("confirmPassword")}
