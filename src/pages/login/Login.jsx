@@ -1,49 +1,93 @@
 import "./login.css";
 import React, { useState } from "react";
-import { Button, IconButton } from "@material-ui/core";
-import logo from "./logo.png";
+import {
+  Button,
+  IconButton,
+  InputAdornment,
+  TextField,
+} from "@material-ui/core";
+import LoginLogo from "./logo.png";
 import { FcGoogle } from "react-icons/fc";
 import { ImFacebook, ImTwitter } from "react-icons/im";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-import { TextInput } from "./TextInput";
+import { Visibility, VisibilityOff } from "@material-ui/icons";
+import { Link } from "react-router-dom";
 
-const schema = yup.object().shape({
-  email: yup.string().email().required("Email is required"),
+const signupSchema = yup.object().shape({
+  email: yup
+    .string()
+    .required("Your Email is required")
+    .email("Enter valid Email"),
   password: yup
     .string()
     .min(8, "Must contain atleast 8 characters")
-    .required("Password is required"),
+    .required("Enter Password"),
+  confirmPassword: yup
+    .string()
+    .oneOf([yup.ref("password"), null], "Password doesn't match")
+    .required("Password Required"),
   fullname: yup.string().required("Your name is required"),
+});
+const signinSchema = yup.object().shape({
+  email: yup
+    .string()
+    .required("Your Email is required")
+    .email("Enter valid Email"),
+  password: yup
+    .string()
+    .min(8, "Must contain atleast 8 characters")
+    .required("Enter Password"),
 });
 
 export default function Login() {
-  const isSignup = true;
+  const [isSignup, setSignup] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm({ resolver: yupResolver(schema) });
+  } = useForm({
+    resolver: isSignup ? yupResolver(signupSchema) : yupResolver(signinSchema),
+  });
 
   const loginSubmit = (data) => {
     console.log(data);
   };
   const handleShowPassword = () => setShowPassword((on) => !on);
   const handleChange = () => {};
+
+  const inputProps = (name, type) => ({
+    disableUnderline: true,
+    style: {
+      fontSize: "13px",
+      fontFamily: "Roboto",
+      padding: "7px 0",
+    },
+    endAdornment: name === "password" && (
+      <InputAdornment>
+        <IconButton disableRipple onClick={handleShowPassword}>
+          {type === "password" ? <Visibility /> : <VisibilityOff />}
+        </IconButton>
+      </InputAdornment>
+    ),
+  });
+
   return (
     <div className="login">
       <div className="loginContainer">
         {/* Login Image Div */}
 
         <div className="loginLeft">
-          <img src={logo} className="loginImg" alt="" />
+          <img src={LoginLogo} className="loginImg" alt="" />
         </div>
         {/* Login Form Starts */}
 
         <div className="loginRight">
-          <h3 className="loginTitle">Welcome Back!</h3>
+          <h3 className="loginTitle">
+            {isSignup ? "Welcome !" : "Welcome Back !"}
+          </h3>
           <form
             className="loginForm"
             autoComplete="off"
@@ -51,37 +95,63 @@ export default function Login() {
           >
             {isSignup && (
               <>
-                <TextInput
+                <TextField
                   className="loginInput"
                   name="fullname"
                   placeholder={`Enter Your First Name`}
                   {...register("fullname")}
+                  InputProps={inputProps()}
                 />
+                {errors.fullname && (
+                  <div className="loginError">{errors.fullname.message}</div>
+                )}
               </>
             )}
 
-            <TextInput
+            <TextField
               className="loginInput"
               name="email"
-              placeholder="Enter Your Email"
               {...register("email")}
+              placeholder="Enter Your Email"
+              InputProps={inputProps("email", "email")}
             />
             {errors.email && (
               <div className="loginError">{errors.email.message}</div>
             )}
 
-            <TextInput
+            <TextField
               className="loginInput"
               name="password"
               handleChange={handleChange}
               type={showPassword ? "text" : "password"}
               handleShowPassword={handleShowPassword}
               placeholder="Enter Your Password"
-              autoComplete="off"
               {...register("password")}
+              InputProps={inputProps(
+                "password",
+                showPassword ? "text" : "password"
+              )}
             />
             {errors.password && (
               <div className="loginError">{errors.password.message}</div>
+            )}
+            {isSignup && (
+              <>
+                <TextField
+                  className="loginInput"
+                  name="confirmPassword"
+                  handleChange={handleChange}
+                  type="password"
+                  placeholder="Confirm Your Password"
+                  {...register("confirmPassword")}
+                  InputProps={inputProps()}
+                />
+                {errors.confirmPassword && (
+                  <div className="loginError">
+                    {errors.confirmPassword.message}
+                  </div>
+                )}
+              </>
             )}
 
             <div
@@ -89,14 +159,21 @@ export default function Login() {
                 fontSize: "11px",
                 margin: "10px  0 10px 10px",
                 color: "grey",
+                display: "inline-block",
+                width: "300px",
               }}
             >
-              Forgort Password?
+              {isSignup
+                ? "Password must contain at least one uppercase, one number & one special characters"
+                : "Forgort Password?"}
             </div>
+
             <Button type="submit" className="loginButton">
-              Login
+              {isSignup ? "Sign Up" : "Sign in"}
             </Button>
+
             <hr />
+
             <div className="loginOthers">
               <div
                 style={{
@@ -130,16 +207,18 @@ export default function Login() {
                 }}
               >
                 Already have an account?
-                <span
+                <Link
                   style={{
+                    textDecoration: "none",
                     color: "black",
-                    fontWeight: 500,
+                    fontWeight: 600,
                     fontSize: "13px",
                     padding: " 0 10px",
                   }}
+                  onClick={() => setSignup((on) => !on)}
                 >
                   Sign In
-                </span>
+                </Link>
               </div>
             ) : (
               <div
@@ -151,16 +230,18 @@ export default function Login() {
                 }}
               >
                 Don't have an account?
-                <span
+                <Link
                   style={{
+                    textDecoration: "none",
                     color: "black",
-                    fontWeight: 500,
+                    fontWeight: 600,
                     fontSize: "13px",
                     padding: " 0 10px",
                   }}
+                  onClick={() => setSignup((on) => !on)}
                 >
-                  Sign up
-                </span>
+                  Sign Up
+                </Link>
               </div>
             )}
           </form>
