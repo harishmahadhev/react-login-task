@@ -14,6 +14,7 @@ const schema = yup.object().shape({
 });
 
 export default function Login() {
+  
   const {
     register,
     handleSubmit,
@@ -23,6 +24,7 @@ export default function Login() {
   const loginSubmit = (data) => {
     console.log(data);
   };
+
   return (
     <div className="login">
       <div className="loginContainer">
@@ -73,14 +75,9 @@ export default function Login() {
             >
               Forgort Password?
             </div>
-            {/* <Link
-            to="/app/home"
-            style={{ textDecoration: "none", color: "inherit" }}
-          > */}
             <Button type="submit" className="loginButton">
               Login
-            </Button>
-            {/* </Link> */}
+            </Button> 
             <hr />
             <div className="loginOthers">
               <div
