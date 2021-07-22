@@ -1,5 +1,5 @@
 import "./login.css";
-import React, { useState } from "react";
+import React, { useReducer, useState } from "react";
 import {
   Button,
   IconButton,
@@ -14,10 +14,12 @@ import { ImFacebook, ImTwitter } from "react-icons/im";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { Visibility, VisibilityOff } from "@material-ui/icons";
-import { Link } from "react-router-dom";
 import { signupSchema, signinSchema } from "./signupSchema";
+import { authReducer } from "./reducer";
 
 export default function Login() {
+  const ClientId =
+    "1043680528544-nje8p2g7e1sf2n7orpo5p7ki24ni0qkr.apps.googleusercontent.com";
   const [isSignup, setSignup] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const {
@@ -27,16 +29,20 @@ export default function Login() {
   } = useForm({
     resolver: isSignup ? yupResolver(signupSchema) : yupResolver(signinSchema),
   });
-
+  const [, dispatch] = useReducer(authReducer, null);
   const loginSubmit = (data) => console.log(data);
-
-  const handleShowPassword = () => setShowPassword((on) => !on);
-
+  const handleshowpassword = () => setShowPassword((on) => !on);
+  const googleFailure = (err) => console.log(err, "Signin unsuccessfull");
+  const googleSuccess = async (res) => {
+    const result = res?.profileObj;
+    const token = res?.tokenId;
+    try {
+      dispatch({ type: "AUTH", data: { result, token } });
+    } catch (error) {
+      console.log(error);
+    }
+  };
   const inputProps = StyledTextField();
-  const googleFailure = () => console.log("Google Sign in unsuccessfull");
-  const googleSuccess = (res) => console.log(res);
-  const ClientId =
-    "1043680528544-nje8p2g7e1sf2n7orpo5p7ki24ni0qkr.apps.googleusercontent.com";
 
   return (
     <div className="login">
@@ -91,7 +97,6 @@ export default function Login() {
               className="loginInput"
               name="password"
               type={showPassword ? "text" : "password"}
-              handleShowPassword={handleShowPassword}
               placeholder="Enter Your Password"
               {...register("password")}
               InputProps={inputProps(
@@ -122,7 +127,7 @@ export default function Login() {
 
             <div
               style={{
-                fontSize: "11px",
+                fontSize: "12px",
                 margin: "10px  0 10px 10px",
                 color: "grey",
                 display: "inline-block",
@@ -187,7 +192,7 @@ export default function Login() {
                 }}
               >
                 Already have an account?
-                <Link
+                <span
                   style={{
                     textDecoration: "none",
                     color: "black",
@@ -198,7 +203,7 @@ export default function Login() {
                   onClick={() => setSignup((on) => !on)}
                 >
                   Sign In
-                </Link>
+                </span>
               </div>
             ) : (
               <div
@@ -210,7 +215,7 @@ export default function Login() {
                 }}
               >
                 Don't have an account?
-                <Link
+                <span
                   style={{
                     textDecoration: "none",
                     color: "black",
@@ -221,7 +226,7 @@ export default function Login() {
                   onClick={() => setSignup((on) => !on)}
                 >
                   Sign Up
-                </Link>
+                </span>
               </div>
             )}
           </form>
@@ -238,13 +243,14 @@ export default function Login() {
         fontFamily: "Roboto",
         padding: "7px 0",
       },
-      endAdornment: name === "password" && (
-        <InputAdornment>
-          <IconButton disableRipple onClick={handleShowPassword}>
-            {type === "password" ? <Visibility /> : <VisibilityOff />}
-          </IconButton>
-        </InputAdornment>
-      ),
+      endAdornment:
+        name === "password" ? (
+          <InputAdornment position="start">
+            <IconButton disableRipple onClick={handleshowpassword}>
+              {type === "password" ? <Visibility /> : <VisibilityOff />}
+            </IconButton>
+          </InputAdornment>
+        ) : null,
     });
   }
 }
