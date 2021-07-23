@@ -51,6 +51,7 @@ export default function Login() {
   const signup = async (formdata) => {
     try {
       const { data } = await api.signUp(formdata)
+      dispatch({type : "AUTH", data})
       history.push("/app/home")
     } catch (error) {
       console.log(error)
@@ -59,6 +60,7 @@ export default function Login() {
     const signin = async (formdata) => {
     try {
       const { data } = await api.signIn(formdata)
+       dispatch({type : "AUTH", data})
         history.push("/app/home")
     } catch (error) {
       console.log(error)
