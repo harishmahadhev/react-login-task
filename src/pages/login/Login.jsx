@@ -10,14 +10,15 @@ import { GoogleLogin } from "react-google-login";
 import signInlogo from "./logo.png";
 import signUplogo from "./logo2.png";
 import { FcGoogle } from "react-icons/fc";
-import { ImFacebook, ImTwitter } from "react-icons/im";
+import { ImTwitter } from "react-icons/im";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { Visibility, VisibilityOff } from "@material-ui/icons";
 import { signupSchema, signinSchema } from "./signupSchema";
 import { useHistory } from "react-router-dom";
 import { storeCtx } from "./reducer";
-import * as api from '../../api/index'
+import * as api from "../../api/index";
+import Facebook from "../../facebook/Facebook";
 
 export default function Login() {
   const ClientId =
@@ -32,7 +33,6 @@ export default function Login() {
     resolver: isSignup ? yupResolver(signupSchema) : yupResolver(signinSchema),
   });
 
- 
   const handleshowpassword = () => setShowPassword((on) => !on);
   const googleFailure = (err) => console.log(err, "Signin unsuccessfull");
   const inputProps = StyledTextField();
@@ -51,33 +51,32 @@ export default function Login() {
   };
   const signup = async (formdata) => {
     try {
-      const { data } = await api.signUp(formdata)
-      dispatch({ type: "AUTH", data })
-       console.log(formdata, data)
-      history.push("/app/home")
+      const { data } = await api.signUp(formdata);
+      dispatch({ type: "AUTH", data });
+      console.log(formdata, data);
+      history.push("/app/home");
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
-  }
-    const signin = async (formdata) => {
+  };
+  const signin = async (formdata) => {
     try {
-      const { data } = await api.signIn(formdata)
-      dispatch({ type: "AUTH", data })
-      console.log(data)
-        history.push("/app/home")
+      const { data } = await api.signIn(formdata);
+      dispatch({ type: "AUTH", data });
+      console.log(data);
+      history.push("/app/home");
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
-  }
+  };
 
-   const loginSubmit = (data) => {
+  const loginSubmit = (data) => {
     if (isSignup) {
-signup(data)
-     }
-     else {
-      signin(data)
-     }
-     console.log(data)
+      signup(data);
+    } else {
+      signin(data);
+    }
+    console.log(data);
   };
 
   return (
@@ -210,9 +209,7 @@ signup(data)
                   cookiePolicy="single_host_origin"
                 />
 
-                <IconButton className="signIn">
-                  <ImFacebook style={{ color: "blue" }} />
-                </IconButton>
+                <Facebook />
                 <IconButton className="signIn">
                   <ImTwitter style={{ color: "skyblue" }} />
                 </IconButton>
