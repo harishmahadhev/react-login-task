@@ -1,5 +1,5 @@
 import "./login.css";
-import React, { useReducer, useState } from "react";
+import React, { useContext, useState } from "react";
 import {
   Button,
   IconButton,
@@ -15,7 +15,8 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { Visibility, VisibilityOff } from "@material-ui/icons";
 import { signupSchema, signinSchema } from "./signupSchema";
-import { authReducer } from "./reducer";
+import { useHistory } from "react-router-dom";
+import { storeCtx } from "./reducer";
 
 export default function Login() {
   const ClientId =
@@ -29,20 +30,23 @@ export default function Login() {
   } = useForm({
     resolver: isSignup ? yupResolver(signupSchema) : yupResolver(signinSchema),
   });
-  const [, dispatch] = useReducer(authReducer, null);
+
   const loginSubmit = (data) => console.log(data);
   const handleshowpassword = () => setShowPassword((on) => !on);
   const googleFailure = (err) => console.log(err, "Signin unsuccessfull");
+  const inputProps = StyledTextField();
+  const history = useHistory();
+  const { dispatch } = useContext(storeCtx);
   const googleSuccess = async (res) => {
     const result = res?.profileObj;
     const token = res?.tokenId;
     try {
       dispatch({ type: "AUTH", data: { result, token } });
+      history.push("/app/home");
     } catch (error) {
       console.log(error);
     }
   };
-  const inputProps = StyledTextField();
 
   return (
     <div className="login">
@@ -199,6 +203,7 @@ export default function Login() {
                     fontWeight: 600,
                     fontSize: "13px",
                     padding: " 0 10px",
+                    cursor: "pointer",
                   }}
                   onClick={() => setSignup((on) => !on)}
                 >
@@ -222,6 +227,7 @@ export default function Login() {
                     fontWeight: 600,
                     fontSize: "13px",
                     padding: " 0 10px",
+                    cursor: "pointer",
                   }}
                   onClick={() => setSignup((on) => !on)}
                 >

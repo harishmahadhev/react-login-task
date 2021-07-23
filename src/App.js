@@ -1,38 +1,33 @@
-import "./App.css";
-import Home from "../src/pages/home/Home";
-import Sidebar from "./components/sidebar/Sidebar";
-import Topbar from "./components/topbar/Topbar";
-import { Route, Switch } from "react-router-dom";
-import UserList from "./pages/userList/UserList";
-import User from "./pages/user/User";
-import NewUser from "./pages/newuser/NewUser";
+import React, { useReducer } from "react";
+import Dash from "./pages/dash/Dash";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Redirect,
+} from "react-router-dom";
+import Login from "./pages/login/Login";
+import { authReducer, storeCtx } from "./pages/login/reducer";
 
-function App() {
+export default function App() {
+  const [, dispatch] = useReducer(authReducer, null);
   return (
-    <Switch>
-      <div className="App">
-        <Topbar />
-        <div className="container">
-          <Sidebar />
-          <Route path="/app/home">
-            <Home />
-          </Route>
-          <Route path="/app/newuser">
-            <NewUser />
-          </Route>
-          <Route path="/app/users/:Id">
-            <User />
-          </Route>
-          <Route exact path="/app/users">
-            <UserList />
-          </Route>
-          {/* <Route exact path="/app">
-            <Redirect to="/home" />
-          </Route> */}
-        </div>
-      </div>
-    </Switch>
+    <Router>
+      <Switch>
+        <Route path="/login">
+          <storeCtx.Provider value={{ dispatch }}>
+            <Login />
+          </storeCtx.Provider>
+        </Route>
+        <Route path="/app">
+          <storeCtx.Provider value={{ dispatch }}>
+            <Dash />
+          </storeCtx.Provider>
+        </Route>
+        <Route exact path="/">
+          <Redirect to="/login" />
+        </Route>
+      </Switch>
+    </Router>
   );
 }
-
-export default App;
