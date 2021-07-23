@@ -17,6 +17,7 @@ import { Visibility, VisibilityOff } from "@material-ui/icons";
 import { signupSchema, signinSchema } from "./signupSchema";
 import { useHistory } from "react-router-dom";
 import { storeCtx } from "./reducer";
+import * as api from '../../api/index'
 
 export default function Login() {
   const ClientId =
@@ -31,7 +32,7 @@ export default function Login() {
     resolver: isSignup ? yupResolver(signupSchema) : yupResolver(signinSchema),
   });
 
-  const loginSubmit = (data) => console.log(data);
+ 
   const handleshowpassword = () => setShowPassword((on) => !on);
   const googleFailure = (err) => console.log(err, "Signin unsuccessfull");
   const inputProps = StyledTextField();
@@ -45,6 +46,31 @@ export default function Login() {
       history.push("/app/home");
     } catch (error) {
       console.log(error);
+    }
+  };
+  const signup = async (formdata) => {
+    try {
+      const { data } = await api.signUp(formdata)
+      history.push("/app/home")
+    } catch (error) {
+      console.log(error)
+    }
+  }
+    const signin = async (formdata) => {
+    try {
+      const { data } = await api.signIn(formdata)
+        history.push("/app/home")
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+   const loginSubmit = (data) => {
+    if (isSignup) {
+      dispatch(signup(data, history));
+     }
+     else {
+      dispatch(signin(data, history));
     }
   };
 
