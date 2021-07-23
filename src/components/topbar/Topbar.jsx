@@ -39,12 +39,12 @@ export default function Topbar() {
             <Settings />
           </Badge>
           <Avatar
-            style={{ width: "30px", height: "30px" }}
+            style={{ width: "30px", height: "30px" ,backgroundColor:"white", color:"black"}}
             className="topbarAvatar"
-            src={user.result.imageUrl}
-            alt={user.result.name}
+            src={user.result?.imageUrl|| user.message?.fullname[0]}
+            alt={user.result?.name}
           >
-            {user.result.name}
+            {user.result?.name || user.message?.fullname[0]}
           </Avatar>
         </div>
       </div>

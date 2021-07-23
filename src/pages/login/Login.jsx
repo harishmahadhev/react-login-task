@@ -38,6 +38,7 @@ export default function Login() {
   const inputProps = StyledTextField();
   const history = useHistory();
   const { dispatch } = useContext(storeCtx);
+
   const googleSuccess = async (res) => {
     const result = res?.profileObj;
     const token = res?.tokenId;
@@ -51,7 +52,8 @@ export default function Login() {
   const signup = async (formdata) => {
     try {
       const { data } = await api.signUp(formdata)
-      dispatch({type : "AUTH", data})
+      dispatch({ type: "AUTH", data })
+       console.log(formdata, data)
       history.push("/app/home")
     } catch (error) {
       console.log(error)
@@ -60,7 +62,8 @@ export default function Login() {
     const signin = async (formdata) => {
     try {
       const { data } = await api.signIn(formdata)
-       dispatch({type : "AUTH", data})
+      dispatch({ type: "AUTH", data })
+      console.log(data)
         history.push("/app/home")
     } catch (error) {
       console.log(error)
@@ -69,11 +72,12 @@ export default function Login() {
 
    const loginSubmit = (data) => {
     if (isSignup) {
-      dispatch(signup(data, history));
+signup(data)
      }
      else {
-      dispatch(signin(data, history));
-    }
+      signin(data)
+     }
+     console.log(data)
   };
 
   return (
@@ -143,15 +147,15 @@ export default function Login() {
               <>
                 <TextField
                   className="loginInput"
-                  name="confirmPassword"
+                  name="confirmpassword"
                   type="password"
                   placeholder="Confirm Your Password"
-                  {...register("confirmPassword")}
+                  {...register("confirmpassword")}
                   InputProps={inputProps()}
                 />
-                {errors.confirmPassword && (
+                {errors.confirmpassword && (
                   <div className="loginError">
-                    {errors.confirmPassword.message}
+                    {errors.confirmpassword.message}
                   </div>
                 )}
               </>
