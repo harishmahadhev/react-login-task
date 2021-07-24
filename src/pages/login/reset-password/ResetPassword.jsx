@@ -1,11 +1,21 @@
-import React from "react";
+import React, { useContext } from "react";
 import "../login.css";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import resetLogo from "../images/logo3.png";
-import { resetSchema } from "./../signupSchema";
-import { Button, TextField } from "@material-ui/core";
-import { useHistory } from "react-router-dom";
+import resetLogo from "../images/logo4.png";
+import { resetSchema } from "../signupSchema";
+import {
+  Button,
+  IconButton,
+  InputAdornment,
+  TextField,
+} from "@material-ui/core";
+import * as api from "../../../api/index.js";
+import { storeCtx } from "../reducer";
+import { useState } from "react";
+import { Visibility, VisibilityOff } from "@material-ui/icons";
+import { useParams } from "react-router-dom";
+
 export default function ResetPassword() {
   const {
     register,
@@ -14,9 +24,30 @@ export default function ResetPassword() {
   } = useForm({
     resolver: yupResolver(resetSchema),
   });
-  const resetSubmit = (data) => {
-    console.log(data);
+  const { dispatch } = useContext(storeCtx);
+  const { token } = useParams();
+  const reset = async (formdata) => {
+    try {
+      console.log(formdata);
+      const { data } = await api.reset(formdata);
+      console.log(formdata);
+      dispatch({ type: "AUTH", data });
+      setState(true);
+    } catch (error) {
+      console.log(error);
+    }
   };
+
+  const resetSubmit = (data) => {
+    data.token = token;
+    reset(data);
+  };
+
+  const [state, setState] = useState(false);
+  const handleshowpassword = () => setShowPassword((on) => !on);
+  const [showPassword, setShowPassword] = useState(false);
+  const inputProps = StyledTextField();
+
   return (
     <div className="login">
       <div className="loginContainer">
@@ -29,33 +60,61 @@ export default function ResetPassword() {
             autoComplete="off"
             onSubmit={handleSubmit(resetSubmit)}
           >
-            <h3 className="resetTitle">Forgot Password ?</h3>
-            <h5 className="resetDetails">
-              Enter your Email to send the password reset link
-            </h5>
+            <h3 className="resetTitle">Password Reset</h3>
+            <h5 className="resetDetails">Enter New Password</h5>
+
             <TextField
               className="loginInput"
-              name="email"
-              {...register("email")}
-              placeholder="Enter Your Email"
-              InputProps={{
-                disableUnderline: true,
-                style: {
-                  fontSize: "13px",
-                  fontFamily: "Roboto",
-                  padding: "7px 0",
-                },
-              }}
+              name="password"
+              type={showPassword ? "text" : "password"}
+              placeholder="Enter Your Password"
+              {...register("password")}
+              InputProps={inputProps(
+                "password",
+                showPassword ? "text" : "password"
+              )}
             />
-            {errors.email && (
-              <div className="loginError">{errors.email.message}</div>
+            {errors.password && (
+              <div className="loginError">{errors.password.message}</div>
+            )}
+            <TextField
+              className="loginInput"
+              name="confirmpassword"
+              type="password"
+              placeholder="Confirm Your Password"
+              {...register("confirmpassword")}
+              InputProps={inputProps()}
+            />
+            {errors.confirmpassword && (
+              <div className="loginError">{errors.confirmpassword.message}</div>
             )}
             <Button type="submit" className="loginButton">
               Send Link
             </Button>
+            {state ? (
+              <div className="resetMessage">Password Changed Successfully</div>
+            ) : null}
           </form>
         </div>
       </div>
     </div>
   );
+  function StyledTextField() {
+    return (name, type) => ({
+      disableUnderline: true,
+      style: {
+        fontSize: "13px",
+        fontFamily: "Roboto",
+        padding: "7px 0",
+      },
+      endAdornment:
+        name === "password" ? (
+          <InputAdornment position="start">
+            <IconButton disableRipple onClick={handleshowpassword}>
+              {type === "password" ? <Visibility /> : <VisibilityOff />}
+            </IconButton>
+          </InputAdornment>
+        ) : null,
+    });
+  }
 }

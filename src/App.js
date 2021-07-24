@@ -8,6 +8,7 @@ import {
 } from "react-router-dom";
 import Login from "./pages/login/Login";
 import { authReducer, storeCtx } from "./pages/login/reducer";
+import ForgotPassword from "./pages/login/reset-password/ForgotPassword";
 import ResetPassword from "./pages/login/reset-password/ResetPassword";
 
 export default function App() {
@@ -20,7 +21,12 @@ export default function App() {
             <Login />
           </storeCtx.Provider>
         </Route>
-        <Route path="/reset">
+        <Route path="/forgotpassword">
+          <storeCtx.Provider value={{ dispatch }}>
+            <ForgotPassword />
+          </storeCtx.Provider>
+        </Route>
+        <Route path="/reset/:token">
           <storeCtx.Provider value={{ dispatch }}>
             <ResetPassword />
           </storeCtx.Provider>

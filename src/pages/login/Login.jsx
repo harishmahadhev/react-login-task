@@ -159,7 +159,7 @@ export default function Login() {
               {isSignup ? (
                 "Password must contain at least one uppercase, one number & one special characters"
               ) : (
-                <Link className="link" to="/reset">
+                <Link className="link" to="/forgotpassword">
                   Forgort Password?
                 </Link>
               )}

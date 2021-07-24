@@ -104,6 +104,12 @@ hr {
     width: 300px;
 }
 
+.resetMessage {
+    font-size: 10px;
+    color: green;
+    padding-left: 10px;
+
+}
 
 .loginRegister {
 

@@ -27,6 +27,17 @@ export const signinSchema = yup.object().shape({
     .required("Enter Password"),
 });
 
-export const resetSchema = yup.object().shape({
+export const forgotSchema = yup.object().shape({
   email: yup.string().email().required("Email Required"),
+});
+
+export const resetSchema = yup.object().shape({
+  password: yup
+    .string()
+    .min(8, "Must contain atleast 8 characters")
+    .required("Enter Password"),
+  confirmpassword: yup
+    .string()
+    .oneOf([yup.ref("password"), null], "Password doesn't match")
+    .required("Password Required"),
 });
