@@ -18,7 +18,7 @@ import { signupSchema, signinSchema } from "./signupSchema";
 import { useHistory } from "react-router-dom";
 import { storeCtx } from "./reducer";
 import * as api from "../../api/index";
-import Facebook from "../../facebook/Facebook";
+import Facebook from "./facebook/Facebook";
 
 export default function Login() {
   const ClientId =
@@ -210,9 +210,9 @@ export default function Login() {
                 />
 
                 <Facebook />
-                <IconButton className="signIn">
+                {/* <IconButton className="signIn">
                   <ImTwitter style={{ color: "skyblue" }} />
-                </IconButton>
+                </IconButton> */}
               </div>
             </div>
             {isSignup ? (

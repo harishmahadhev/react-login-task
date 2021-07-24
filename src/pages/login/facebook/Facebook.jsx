@@ -4,7 +4,7 @@ import { useContext } from "react";
 import FacebookLogin from "react-facebook-login";
 import { ImFacebook } from "react-icons/im";
 import { useHistory } from "react-router-dom";
-import { storeCtx } from "../pages/login/reducer";
+import { storeCtx } from "../reducer";
 
 import "./facebook.css";
 export default function Facebook() {
