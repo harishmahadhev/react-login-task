@@ -93,9 +93,35 @@ hr {
 .loginOthers {
     display: flex;
     flex-direction: column;
+    text-align: center;
+}
+
+.loginHelperText {
+    font-size: 12px;
+    margin: 10px 0 10px 10px;
+    color: grey;
+    display: inline-block;
+    width: 300px;
+}
+
+
+.loginRegister {
+
+    text-decoration: none;
+    color: black;
+    font-weight: 600;
+    font-size: 13px;
+    padding: 0 10px;
+    cursor: pointer;
+}
+
+.link {
+    text-decoration: none;
+    color: inherit;
 }
 
 .signInIcons {
+    text-align: center;
     display: flex;
     justify-content: center;
     align-content: center;
@@ -112,10 +138,23 @@ hr {
 
 }
 
+
 .loginError {
     font-size: 10px;
     padding-left: 10px;
     color: red;
+}
+
+.resetTitle {
+    font-weight: 600;
+
+}
+
+.resetDetails {
+    color: gray;
+    font-weight: 500;
+    font-size: 12px;
+    margin: 10px 0;
 }
 
 @media screen and (max-width : 600px) {

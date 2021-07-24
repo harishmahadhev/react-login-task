@@ -1,4 +1,3 @@
-import { IconButton } from "@material-ui/core";
 import { useContext } from "react";
 // import React, { useState } from "react";
 import FacebookLogin from "react-facebook-login";
@@ -20,7 +19,7 @@ export default function Facebook() {
       console.log(d);
     }
   };
-  const componentClicked = () => console.log("FACEBOOK CLICKE");
+  const componentClicked = () => console.log("FACEBOOK CLICK");
   return (
     <div>
       <FacebookLogin
@@ -29,11 +28,7 @@ export default function Facebook() {
         callback={responseFacebook}
         autoLoad={true}
         fields="name,email,picture"
-        textButton={
-          <IconButton className="signIn">
-            <ImFacebook style={{ color: "blue" }} />
-          </IconButton>
-        }
+        textButton={<ImFacebook style={{ color: "blue" }} />}
         size="small"
         cssClass="facebook-login"
       />

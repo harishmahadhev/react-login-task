@@ -7,15 +7,14 @@ import {
   TextField,
 } from "@material-ui/core";
 import { GoogleLogin } from "react-google-login";
-import signInlogo from "./logo.png";
-import signUplogo from "./logo2.png";
+import signInlogo from "./images/logo.png";
+import signUplogo from "./images/logo2.png";
 import { FcGoogle } from "react-icons/fc";
-// import { ImTwitter } from "react-icons/im";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { Visibility, VisibilityOff } from "@material-ui/icons";
 import { signupSchema, signinSchema } from "./signupSchema";
-import { useHistory } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { storeCtx } from "./reducer";
 import * as api from "../../api/index";
 import Facebook from "./facebook/Facebook";
@@ -156,18 +155,14 @@ export default function Login() {
               </>
             )}
 
-            <div
-              style={{
-                fontSize: "12px",
-                margin: "10px  0 10px 10px",
-                color: "grey",
-                display: "inline-block",
-                width: "300px",
-              }}
-            >
-              {isSignup
-                ? "Password must contain at least one uppercase, one number & one special characters"
-                : "Forgort Password?"}
+            <div className="loginHelperText">
+              {isSignup ? (
+                "Password must contain at least one uppercase, one number & one special characters"
+              ) : (
+                <Link className="link" to="/reset">
+                  Forgort Password?
+                </Link>
+              )}
             </div>
 
             <Button type="submit" className="loginButton">
@@ -177,16 +172,7 @@ export default function Login() {
             <hr />
 
             <div className="loginOthers">
-              <div
-                style={{
-                  fontSize: "12px",
-                  margin: "10px 0",
-                  color: "grey",
-                  textAlign: "center",
-                }}
-              >
-                Sign in with
-              </div>
+              <div className="loginHelperText">Sign in with</div>
 
               <div className="signInIcons">
                 <GoogleLogin
@@ -210,56 +196,20 @@ export default function Login() {
                   <ImTwitter style={{ color: "skyblue" }} />
                 </IconButton> */}
               </div>
+
+              <div className="loginHelperText">
+                {isSignup
+                  ? "Already have an account?"
+                  : "Don't have an account?"}
+
+                <span
+                  className="loginRegister"
+                  onClick={() => setSignup((on) => !on)}
+                >
+                  {isSignup ? "Sign Up" : "Sign in"}
+                </span>
+              </div>
             </div>
-            {isSignup ? (
-              <div
-                style={{
-                  fontSize: "12px",
-                  textAlign: "center",
-                  color: "grey",
-                  padding: "10px 0",
-                }}
-              >
-                Already have an account?
-                <span
-                  style={{
-                    textDecoration: "none",
-                    color: "black",
-                    fontWeight: 600,
-                    fontSize: "13px",
-                    padding: " 0 10px",
-                    cursor: "pointer",
-                  }}
-                  onClick={() => setSignup((on) => !on)}
-                >
-                  Sign In
-                </span>
-              </div>
-            ) : (
-              <div
-                style={{
-                  fontSize: "12px",
-                  textAlign: "center",
-                  color: "grey",
-                  padding: "10px 0",
-                }}
-              >
-                Don't have an account?
-                <span
-                  style={{
-                    textDecoration: "none",
-                    color: "black",
-                    fontWeight: 600,
-                    fontSize: "13px",
-                    padding: " 0 10px",
-                    cursor: "pointer",
-                  }}
-                  onClick={() => setSignup((on) => !on)}
-                >
-                  Sign Up
-                </span>
-              </div>
-            )}
           </form>
         </div>
       </div>

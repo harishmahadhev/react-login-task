@@ -26,3 +26,7 @@ export const signinSchema = yup.object().shape({
     .min(8, "Must contain atleast 8 characters")
     .required("Enter Password"),
 });
+
+export const resetSchema = yup.object().shape({
+  email: yup.string().email().required("Email Required"),
+});
