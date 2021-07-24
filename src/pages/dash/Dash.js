@@ -1,11 +1,11 @@
 import "./Dash.css";
-import Home from "../home/Home";
 import Sidebar from "../../components/sidebar/Sidebar";
 import Topbar from "../../components/topbar/Topbar";
 import { Route, Switch } from "react-router-dom";
 import UserList from "../userList/UserList";
 import User from "../user/User";
 import NewUser from "../newuser/NewUser";
+import Home from "./../home/Home";
 
 function Dash() {
   return (
