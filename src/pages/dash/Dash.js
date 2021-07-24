@@ -26,9 +26,6 @@ function Dash() {
           <Route exact path="/app/users">
             <UserList />
           </Route>
-          {/* <Route exact path="/app">
-            <Redirect to="/home" />
-          </Route> */}
         </Switch>
       </div>
     </div>
