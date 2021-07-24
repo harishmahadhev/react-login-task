@@ -14,7 +14,7 @@ import * as api from "../../../api/index.js";
 import { storeCtx } from "../reducer";
 import { useState } from "react";
 import { Visibility, VisibilityOff } from "@material-ui/icons";
-import { useParams } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 
 export default function ResetPassword() {
   const {
@@ -26,15 +26,15 @@ export default function ResetPassword() {
   });
   const { dispatch } = useContext(storeCtx);
   const { token } = useParams();
+  const history = useHistory();
   const reset = async (formdata) => {
     try {
-      console.log(formdata);
       const { data } = await api.reset(formdata);
-      console.log(formdata);
       dispatch({ type: "AUTH", data });
       setState(true);
+      history.push("/login");
     } catch (error) {
-      console.log(error);
+      console.log("Session Expired");
     }
   };
 

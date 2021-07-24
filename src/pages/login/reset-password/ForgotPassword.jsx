@@ -8,6 +8,7 @@ import { Button, TextField } from "@material-ui/core";
 import * as api from "../../../api/index.js";
 import { storeCtx } from "../reducer";
 import { useState } from "react";
+import { useHistory } from "react-router-dom";
 
 export default function ForgotPassword() {
   const {
@@ -19,14 +20,15 @@ export default function ForgotPassword() {
   });
 
   const { dispatch } = useContext(storeCtx);
-
+  const history = useHistory();
   const reset = async (formdata) => {
     try {
       const { data } = await api.forgot(formdata);
       dispatch({ type: "AUTH", data });
       setState(true);
+      history.push("/");
     } catch (error) {
-      console.log(error);
+      console.log("Email doesn't exists");
     }
   };
 
