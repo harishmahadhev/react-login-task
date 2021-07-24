@@ -63,11 +63,8 @@ export default function Login() {
     try {
       const { data } = await api.signIn(formdata);
       dispatch({ type: "AUTH", data });
-      console.log(data);
       history.push("/app/home");
-    } catch (error) {
-      console.log(error);
-    }
+    } catch (error) {}
   };
 
   const loginSubmit = (data) => {
@@ -76,7 +73,6 @@ export default function Login() {
     } else {
       signin(data);
     }
-    console.log(data);
   };
 
   return (

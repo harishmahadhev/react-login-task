@@ -29,14 +29,13 @@ export default function Facebook() {
         callback={responseFacebook}
         autoLoad={true}
         fields="name,email,picture"
-        textButton=""
-        size="small"
-        cssClass="facebook-login"
-        icon={
+        textButton={
           <IconButton className="signIn">
             <ImFacebook style={{ color: "blue" }} />
           </IconButton>
         }
+        size="small"
+        cssClass="facebook-login"
       />
     </div>
   );
