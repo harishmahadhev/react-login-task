@@ -10,7 +10,7 @@ import { GoogleLogin } from "react-google-login";
 import signInlogo from "./logo.png";
 import signUplogo from "./logo2.png";
 import { FcGoogle } from "react-icons/fc";
-import { ImTwitter } from "react-icons/im";
+// import { ImTwitter } from "react-icons/im";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { Visibility, VisibilityOff } from "@material-ui/icons";
