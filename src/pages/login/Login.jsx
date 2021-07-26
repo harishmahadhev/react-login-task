@@ -206,7 +206,7 @@ export default function Login() {
                   className="loginRegister"
                   onClick={() => setSignup((on) => !on)}
                 >
-                  {isSignup ? "Sign Up" : "Sign in"}
+                  {isSignup ? "Sign In" : "Sign Up"}
                 </span>
               </div>
             </div>
