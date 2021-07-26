@@ -32,7 +32,9 @@ export default function ResetPassword() {
       const { data } = await api.reset(formdata);
       dispatch({ type: "AUTH", data });
       setState(true);
-      history.push("/login");
+      setTimeout(() => {
+        history.push("/");
+      }, 1000);
     } catch (error) {
       console.log("Session Expired");
     }

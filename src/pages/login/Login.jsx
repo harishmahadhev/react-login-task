@@ -6,10 +6,10 @@ import {
   InputAdornment,
   TextField,
 } from "@material-ui/core";
-import { GoogleLogin } from "react-google-login";
+// import { GoogleLogin } from "react-google-login";
 import signInlogo from "./images/logo.png";
 import signUplogo from "./images/logo2.png";
-import { FcGoogle } from "react-icons/fc";
+// import { FcGoogle } from "react-icons/fc";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { Visibility, VisibilityOff } from "@material-ui/icons";
@@ -17,7 +17,7 @@ import { signupSchema, signinSchema } from "./signupSchema";
 import { Link, useHistory } from "react-router-dom";
 import { storeCtx } from "./reducer";
 import * as api from "../../api/index";
-import Facebook from "./facebook/Facebook";
+// import Facebook from "./facebook/Facebook";
 
 export default function Login() {
   const ClientId =
@@ -53,7 +53,7 @@ export default function Login() {
       const { data } = await api.signUp(formdata);
       dispatch({ type: "AUTH", data });
       console.log(formdata, data);
-      history.push("/app/home");
+      history.push("/");
     } catch (error) {
       console.log(error);
     }
@@ -172,7 +172,7 @@ export default function Login() {
             <hr />
 
             <div className="loginOthers">
-              <div className="loginHelperText">Sign in with</div>
+              {/* <div className="loginHelperText">Sign in with</div>
 
               <div className="signInIcons">
                 <GoogleLogin
@@ -191,11 +191,11 @@ export default function Login() {
                   cookiePolicy="single_host_origin"
                 />
 
-                <Facebook />
-                {/* <IconButton className="signIn">
+                <Facebook /> */}
+              {/* <IconButton className="signIn">
                   <ImTwitter style={{ color: "skyblue" }} />
                 </IconButton> */}
-              </div>
+              {/* </div> */}
 
               <div className="loginHelperText">
                 {isSignup
