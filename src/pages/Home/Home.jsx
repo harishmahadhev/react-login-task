@@ -1,6 +1,6 @@
 import "./home.css";
 import React from "react";
-import BookTable from "../../components/widgetLg/BookTable";
+import BookTable from "../../components/booktable/BookTable";
 
 export default function Home() {
   return (
