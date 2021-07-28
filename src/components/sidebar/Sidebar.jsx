@@ -33,35 +33,23 @@ export default function Sidebar() {
                 <Home className="sidebarIcon" /> Home
               </li>
             </Link>
-            <Link
-              style={{ textDecoration: "none", color: "inherit" }}
-              to="/app/users"
+
+            <li
+              className={
+                classes === 2 ? "sidebarListItem active" : "sidebarListItem"
+              }
             >
-              <li
-                className={
-                  classes === 2 ? "sidebarListItem active" : "sidebarListItem"
-                }
-                onClick={() => handleChange(2)}
-              >
-                <Person className="sidebarIcon" /> User
-              </li>
-            </Link>
-            <Link
-              style={{ textDecoration: "none", color: "inherit" }}
-              to="/app/newuser"
-            >
-              <li className="sidebarListItem">
-                <ShoppingCart className="sidebarIcon" /> Create User
-              </li>
-            </Link>
-            <Link
-              style={{ textDecoration: "none", color: "inherit" }}
-              to="/app/users/:id"
-            >
-              <li className="sidebarListItem">
-                <Assessment className="sidebarIcon" /> Edit User
-              </li>
-            </Link>
+              <Person className="sidebarIcon" /> User
+            </li>
+
+            <li className="sidebarListItem">
+              <ShoppingCart className="sidebarIcon" /> Add Book
+            </li>
+
+            <li className="sidebarListItem">
+              <Assessment className="sidebarIcon" /> Edit
+            </li>
+
             <Link
               style={{ textDecoration: "none", color: "inherit" }}
               to="/login"

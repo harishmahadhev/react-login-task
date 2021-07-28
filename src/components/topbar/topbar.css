@@ -35,3 +35,11 @@
 .topbarAvatar {
     width: 5px;
 }
+
+.topbarRight .logout {
+    font-family: "roboto";
+    font-size: 10px;
+    border: 1px solid white;
+    color: white;
+    margin-left: 10px;
+}

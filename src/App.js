@@ -9,7 +9,6 @@ import {
 import Login from "./pages/login/Login";
 import { authReducer, storeCtx } from "./pages/login/reducer";
 import ForgotPassword from "./pages/login/reset-password/ForgotPassword";
-import ResetPassword from "./pages/login/reset-password/ResetPassword";
 
 export default function App() {
   const [, dispatch] = useReducer(authReducer, null);
@@ -24,11 +23,6 @@ export default function App() {
         <Route path="/forgotpassword">
           <storeCtx.Provider value={{ dispatch }}>
             <ForgotPassword />
-          </storeCtx.Provider>
-        </Route>
-        <Route path="/reset/:token">
-          <storeCtx.Provider value={{ dispatch }}>
-            <ResetPassword />
           </storeCtx.Provider>
         </Route>
         <Route path="/app">

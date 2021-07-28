@@ -2,10 +2,7 @@ import "./Dash.css";
 import Sidebar from "../../components/sidebar/Sidebar";
 import Topbar from "../../components/topbar/Topbar";
 import { Route, Switch } from "react-router-dom";
-import UserList from "../userList/UserList";
-import User from "../user/User";
-import NewUser from "../newuser/NewUser";
-import Home from "./../home/Home";
+import Home from "../Home/Home";
 
 function Dash() {
   return (
@@ -16,15 +13,6 @@ function Dash() {
         <Switch>
           <Route path="/app/home">
             <Home />
-          </Route>
-          <Route path="/app/newuser">
-            <NewUser />
-          </Route>
-          <Route path="/app/users/:Id">
-            <User />
-          </Route>
-          <Route exact path="/app/users">
-            <UserList />
           </Route>
         </Switch>
       </div>

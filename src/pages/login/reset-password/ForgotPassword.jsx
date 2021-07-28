@@ -1,13 +1,9 @@
-import React, { useContext } from "react";
 import "../login.css";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import resetLogo from "../images/logo3.png";
 import { forgotSchema } from "../signupSchema";
 import { Button, TextField } from "@material-ui/core";
-import * as api from "../../../api/index.js";
-import { storeCtx } from "../reducer";
-import { useState } from "react";
 
 export default function ForgotPassword() {
   const {
@@ -18,21 +14,9 @@ export default function ForgotPassword() {
     resolver: yupResolver(forgotSchema),
   });
 
-  const { dispatch } = useContext(storeCtx);
-  const reset = async (formdata) => {
-    try {
-      const { data } = await api.forgot(formdata);
-      dispatch({ type: "AUTH", data });
-      setState(true);
-    } catch (error) {
-      console.log("Email doesn't exists");
-    }
-  };
-
   const resetSubmit = (data) => {
-    reset(data);
+    console.log(data);
   };
-  const [state, setState] = useState(false);
   return (
     <div className="login">
       <div className="loginContainer">
@@ -69,9 +53,6 @@ export default function ForgotPassword() {
             <Button type="submit" className="loginButton">
               Send Link
             </Button>
-            {state ? (
-              <div className="resetMessage">Email sent Successfully</div>
-            ) : null}
           </form>
         </div>
       </div>

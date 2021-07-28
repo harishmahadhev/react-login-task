@@ -6,10 +6,8 @@ import {
   InputAdornment,
   TextField,
 } from "@material-ui/core";
-// import { GoogleLogin } from "react-google-login";
 import signInlogo from "./images/logo.png";
 import signUplogo from "./images/logo2.png";
-// import { FcGoogle } from "react-icons/fc";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { Visibility, VisibilityOff } from "@material-ui/icons";
@@ -17,11 +15,8 @@ import { signupSchema, signinSchema } from "./signupSchema";
 import { Link, useHistory } from "react-router-dom";
 import { storeCtx } from "./reducer";
 import * as api from "../../api/index";
-// import Facebook from "./facebook/Facebook";
 
 export default function Login() {
-  const ClientId =
-    "1043680528544-nje8p2g7e1sf2n7orpo5p7ki24ni0qkr.apps.googleusercontent.com";
   const [isSignup, setSignup] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const {
@@ -33,21 +28,10 @@ export default function Login() {
   });
 
   const handleshowpassword = () => setShowPassword((on) => !on);
-  const googleFailure = (err) => console.log(err, "Signin unsuccessfull");
   const inputProps = StyledTextField();
   const history = useHistory();
   const { dispatch } = useContext(storeCtx);
 
-  const googleSuccess = async (res) => {
-    const result = res?.profileObj;
-    const token = res?.tokenId;
-    try {
-      dispatch({ type: "AUTH", data: { result, token } });
-      history.push("/app/home");
-    } catch (error) {
-      console.log(error);
-    }
-  };
   const signup = async (formdata) => {
     try {
       const { data } = await api.signUp(formdata);
@@ -58,6 +42,7 @@ export default function Login() {
       console.log(error);
     }
   };
+
   const signin = async (formdata) => {
     try {
       const { data } = await api.signIn(formdata);
@@ -172,36 +157,10 @@ export default function Login() {
             <hr />
 
             <div className="loginOthers">
-              {/* <div className="loginHelperText">Sign in with</div>
-
-              <div className="signInIcons">
-                <GoogleLogin
-                  clientId={ClientId}
-                  render={(renderProps) => (
-                    <IconButton
-                      className="signIn"
-                      onClick={renderProps.onClick}
-                      disabled={renderProps.disabled}
-                    >
-                      <FcGoogle />
-                    </IconButton>
-                  )}
-                  onSuccess={googleSuccess}
-                  onFailure={googleFailure}
-                  cookiePolicy="single_host_origin"
-                />
-
-                <Facebook /> */}
-              {/* <IconButton className="signIn">
-                  <ImTwitter style={{ color: "skyblue" }} />
-                </IconButton> */}
-              {/* </div> */}
-
               <div className="loginHelperText">
                 {isSignup
                   ? "Already have an account?"
                   : "Don't have an account?"}
-
                 <span
                   className="loginRegister"
                   onClick={() => setSignup((on) => !on)}

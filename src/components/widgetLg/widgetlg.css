@@ -1,16 +1,23 @@
-.widgetLg {
+.BookTable {
     flex: 2;
+
+}
+
+.widgetLg {
+
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
     border-radius: 10px;
     padding: 20px 0;
     margin-right: 10px;
+    display: flex;
+    flex-direction: column;
 }
 
 .widgetLgTitle {
     padding-left: 20px;
 }
 
-.widgetLgButton.Approved {
+.widgetLgButton.Returned {
     color: rgb(0, 87, 0);
     background-color: rgb(186, 252, 221);
 }
@@ -23,4 +30,16 @@
 .widgetLgButton.Declined {
     color: rgb(88, 0, 44);
     background-color: rgb(255, 224, 229);
+}
+
+.BookTable .createButton {
+    background-color: rgb(37, 37, 37);
+    color: white;
+    margin-bottom: 20px;
+
+}
+
+.BookTable .createButton:hover {
+    background-color: rgb(68, 67, 67);
+    color: white;
 }
